@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Globalization;
+using System.Text.RegularExpressions;
 
 namespace rogue_launcher
 {
@@ -15,6 +17,27 @@ namespace rogue_launcher
         public Signin()
         {
             InitializeComponent();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            bool email = false;
+
+            if (Signin_email.Text.Length > 0)
+            {
+                foreach (char c in Signin_email.Text)
+                {
+                    if (c == '@')
+                    {
+                        email = true;
+                    }
+                }
+            }
+
+            if (!email)
+            {
+                MessageBox.Show("Veuillez entrer une adresse e-mail valide.", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
