@@ -16,5 +16,12 @@ namespace rogue_launcher
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Signin singin = new Signin();
+
+            singin.Show();
+        }
     }
 }
