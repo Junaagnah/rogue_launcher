@@ -19,3 +19,4 @@ C:\Users\nicol\source\repos\Junaagnah\rogue_launcher\rogue_launcher\obj\Debug\ro
 C:\Users\nicol\source\repos\Junaagnah\rogue_launcher\rogue_launcher\obj\Debug\rogue_launcher.exe
 C:\Users\nicol\source\repos\Junaagnah\rogue_launcher\rogue_launcher\obj\Debug\rogue_launcher.pdb
 C:\Users\nicol\source\repos\Junaagnah\rogue_launcher\rogue_launcher\obj\Debug\rogue_launcher.signin.resources
+C:\Users\nicol\source\repos\Junaagnah\rogue_launcher\rogue_launcher\obj\Debug\rogue_launcher.Signup.resources

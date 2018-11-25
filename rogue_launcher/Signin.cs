@@ -21,22 +21,28 @@ namespace rogue_launcher
 
         private void button1_Click(object sender, EventArgs e)
         {
-            bool email = false;
-
-            if (Signin_email.Text.Length > 0)
+            if (Signin_email.Text != "" && Signin_password.Text != "")
             {
-                foreach (char c in Signin_email.Text)
+                bool email = false;
+
+                if (Signin_email.Text.Length > 0)
                 {
-                    if (c == '@')
+                    foreach (char c in Signin_email.Text)
                     {
-                        email = true;
+                        if (c == '@')
+                        {
+                            email = true;
+                        }
                     }
                 }
-            }
 
-            if (!email)
+                if (!email)
+                {
+                    MessageBox.Show("Veuillez entrer une adresse e-mail valide.", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            } else
             {
-                MessageBox.Show("Veuillez entrer une adresse e-mail valide.", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Merci de remplir tous les champs.", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
