@@ -20,3 +20,9 @@ C:\Users\nicol\source\repos\Junaagnah\rogue_launcher\rogue_launcher\obj\Debug\ro
 C:\Users\nicol\source\repos\Junaagnah\rogue_launcher\rogue_launcher\obj\Debug\rogue_launcher.pdb
 C:\Users\nicol\source\repos\Junaagnah\rogue_launcher\rogue_launcher\obj\Debug\rogue_launcher.signin.resources
 C:\Users\nicol\source\repos\Junaagnah\rogue_launcher\rogue_launcher\obj\Debug\rogue_launcher.Signup.resources
+C:\Users\nicol\Source\Repos\Junaagnah\rogue_launcher\rogue_launcher\bin\Debug\MySql.Data.dll
+C:\Users\nicol\Source\Repos\Junaagnah\rogue_launcher\rogue_launcher\bin\Debug\MySql.Web.dll
+C:\Users\nicol\Source\Repos\Junaagnah\rogue_launcher\rogue_launcher\bin\Debug\Google.Protobuf.dll
+C:\Users\nicol\Source\Repos\Junaagnah\rogue_launcher\rogue_launcher\bin\Debug\MySql.Data.xml
+C:\Users\nicol\Source\Repos\Junaagnah\rogue_launcher\rogue_launcher\bin\Debug\MySql.Web.xml
+C:\Users\nicol\Source\Repos\Junaagnah\rogue_launcher\rogue_launcher\obj\Debug\rogue_launcher.csproj.CopyComplete

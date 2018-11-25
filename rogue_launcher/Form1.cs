@@ -12,6 +12,9 @@ namespace rogue_launcher
 {
     public partial class Form1 : Form
     {
+        Signin _singin = new Signin();
+        Signup _signup = new Signup();
+
         public Form1()
         {
             InitializeComponent();
@@ -19,9 +22,12 @@ namespace rogue_launcher
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Signin singin = new Signin();
+            _singin.Show();
+        }
 
-            singin.Show();
+        private void button2_Click(object sender, EventArgs e)
+        {
+            _signup.Show();
         }
     }
 }

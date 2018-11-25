@@ -12,9 +12,21 @@ namespace rogue_launcher
 {
     public partial class Signup : Form
     {
+        Cbdd bdd = new Cbdd();
+
         public Signup()
         {
             InitializeComponent();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
