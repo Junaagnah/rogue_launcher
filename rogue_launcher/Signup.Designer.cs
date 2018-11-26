@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.Signup_confpasswd = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.Signup_passwd = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.Signup_username = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Signup_email = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -44,13 +44,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.Signup_confpasswd);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.Signup_passwd);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.Signup_username);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.Signup_email);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(8, 8);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
@@ -60,14 +60,14 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // textBox4
+            // Signup_confpasswd
             // 
-            this.textBox4.Location = new System.Drawing.Point(7, 167);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(336, 20);
-            this.textBox4.TabIndex = 9;
-            this.textBox4.UseSystemPasswordChar = true;
+            this.Signup_confpasswd.Location = new System.Drawing.Point(7, 167);
+            this.Signup_confpasswd.Margin = new System.Windows.Forms.Padding(2);
+            this.Signup_confpasswd.Name = "Signup_confpasswd";
+            this.Signup_confpasswd.Size = new System.Drawing.Size(336, 20);
+            this.Signup_confpasswd.TabIndex = 9;
+            this.Signup_confpasswd.UseSystemPasswordChar = true;
             // 
             // label4
             // 
@@ -80,14 +80,14 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "CONFIRMATION DU MOT DE PASSE :";
             // 
-            // textBox3
+            // Signup_passwd
             // 
-            this.textBox3.Location = new System.Drawing.Point(7, 123);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(336, 20);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.UseSystemPasswordChar = true;
+            this.Signup_passwd.Location = new System.Drawing.Point(7, 123);
+            this.Signup_passwd.Margin = new System.Windows.Forms.Padding(2);
+            this.Signup_passwd.Name = "Signup_passwd";
+            this.Signup_passwd.Size = new System.Drawing.Size(336, 20);
+            this.Signup_passwd.TabIndex = 7;
+            this.Signup_passwd.UseSystemPasswordChar = true;
             // 
             // label3
             // 
@@ -100,13 +100,13 @@
             this.label3.TabIndex = 6;
             this.label3.Text = "MOT DE PASSE :";
             // 
-            // textBox2
+            // Signup_username
             // 
-            this.textBox2.Location = new System.Drawing.Point(7, 79);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(336, 20);
-            this.textBox2.TabIndex = 5;
+            this.Signup_username.Location = new System.Drawing.Point(7, 79);
+            this.Signup_username.Margin = new System.Windows.Forms.Padding(2);
+            this.Signup_username.Name = "Signup_username";
+            this.Signup_username.Size = new System.Drawing.Size(336, 20);
+            this.Signup_username.TabIndex = 5;
             // 
             // label2
             // 
@@ -119,13 +119,13 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "NOM D\'UTILISATEUR :";
             // 
-            // textBox1
+            // Signup_email
             // 
-            this.textBox1.Location = new System.Drawing.Point(7, 35);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(336, 20);
-            this.textBox1.TabIndex = 3;
+            this.Signup_email.Location = new System.Drawing.Point(7, 35);
+            this.Signup_email.Margin = new System.Windows.Forms.Padding(2);
+            this.Signup_email.Name = "Signup_email";
+            this.Signup_email.Size = new System.Drawing.Size(336, 20);
+            this.Signup_email.TabIndex = 3;
             // 
             // label1
             // 
@@ -187,12 +187,12 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox Signup_passwd;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox Signup_username;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.TextBox Signup_email;
+        private System.Windows.Forms.TextBox Signup_confpasswd;
         private System.Windows.Forms.Label label4;
     }
 }

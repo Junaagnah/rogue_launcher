@@ -26,3 +26,8 @@ C:\Users\nicol\Source\Repos\Junaagnah\rogue_launcher\rogue_launcher\bin\Debug\Go
 C:\Users\nicol\Source\Repos\Junaagnah\rogue_launcher\rogue_launcher\bin\Debug\MySql.Data.xml
 C:\Users\nicol\Source\Repos\Junaagnah\rogue_launcher\rogue_launcher\bin\Debug\MySql.Web.xml
 C:\Users\nicol\Source\Repos\Junaagnah\rogue_launcher\rogue_launcher\obj\Debug\rogue_launcher.csproj.CopyComplete
+C:\Users\adai202\source\repos\Junaagnah\rogue_launcher\rogue_launcher\bin\Debug\MySql.Data.dll
+C:\Users\adai202\source\repos\Junaagnah\rogue_launcher\rogue_launcher\bin\Debug\MySql.Web.dll
+C:\Users\adai202\source\repos\Junaagnah\rogue_launcher\rogue_launcher\obj\Debug\rogue_launcher.Signin.resources
+C:\Users\adai202\source\repos\Junaagnah\rogue_launcher\rogue_launcher\obj\Debug\rogue_launcher.Signup.resources
+C:\Users\adai202\source\repos\Junaagnah\rogue_launcher\rogue_launcher\obj\Debug\rogue_launcher.csproj.CopyComplete
