@@ -12,6 +12,7 @@ namespace rogue_launcher
 {
     public partial class Signup : Form
     {
+        Cbdd bdd = new Cbdd();
 
         public Signup()
         {
@@ -24,9 +25,7 @@ namespace rogue_launcher
         }
 
         private void button1_Click(object sender, EventArgs e)
-        {
-            Cbdd bdd = new Cbdd();
-
+        { 
             String email = Signup_email.Text;
             String username = Signup_username.Text;
             String passwd = Signup_passwd.Text;
