@@ -32,10 +32,10 @@
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.ButtonConnect = new System.Windows.Forms.Button();
             this.ButtonSignup = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.Settingspic = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Settingspic)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -80,16 +80,16 @@
             this.ButtonSignup.UseVisualStyleBackColor = true;
             this.ButtonSignup.Click += new System.EventHandler(this.button2_Click);
             // 
-            // pictureBox1
+            // Settingspic
             // 
-            this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.pictureBox1.Image = global::rogue_launcher.Properties.Resources.settings_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(762, 6);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(26, 25);
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
-            this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
+            this.Settingspic.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Settingspic.Image = global::rogue_launcher.Properties.Resources.settings_icon;
+            this.Settingspic.Location = new System.Drawing.Point(762, 6);
+            this.Settingspic.Name = "Settingspic";
+            this.Settingspic.Size = new System.Drawing.Size(26, 25);
+            this.Settingspic.TabIndex = 4;
+            this.Settingspic.TabStop = false;
+            this.Settingspic.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // button1
             // 
@@ -115,7 +115,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.Settingspic);
             this.Controls.Add(this.ButtonSignup);
             this.Controls.Add(this.ButtonConnect);
             this.Controls.Add(this.webBrowser1);
@@ -127,7 +127,7 @@
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Roguelike Launcher";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Settingspic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -139,7 +139,7 @@
         private System.Windows.Forms.WebBrowser webBrowser1;
         public System.Windows.Forms.Button ButtonConnect;
         public System.Windows.Forms.Button ButtonSignup;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        public System.Windows.Forms.PictureBox Settingspic;
         private System.Windows.Forms.Button button1;
         public System.Windows.Forms.Label label2;
     }

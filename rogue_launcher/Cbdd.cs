@@ -228,7 +228,7 @@ namespace rogue_launcher
 
                 MySqlCommand query = this.connection.CreateCommand();
 
-                query.CommandText = "SELECT id, username, admin FROM users WHERE email = @email AND password = SHA2(@password, 224)";
+                query.CommandText = "SELECT id, email, username, admin FROM users WHERE email = @email AND password = SHA2(@password, 224)";
 
                 query.Parameters.AddWithValue("@email", email);
                 query.Parameters.AddWithValue("@password", password);
@@ -239,7 +239,7 @@ namespace rogue_launcher
                     {
                         while (reader.Read())
                         {
-                            user = new User(Convert.ToInt32(reader[0]), reader[1].ToString(), Convert.ToBoolean(reader[2]));
+                            user = new User(Convert.ToInt32(reader[0]), Convert.ToString(reader[1]), Convert.ToString(reader[2]), Convert.ToBoolean(reader[3]), false);
                         }
                     }
                     else
@@ -288,6 +288,35 @@ namespace rogue_launcher
             }
 
             return users;
+        }
+
+        public bool DeleteUser(int id)
+        {
+            bool result = false;
+
+            try
+            {
+                this.connection.Open();
+
+                MySqlCommand query = this.connection.CreateCommand();
+
+                query.CommandText = "DELETE FROM users WHERE id IN (@id)";
+
+                query.Parameters.AddWithValue("@id", id);
+
+                query.ExecuteNonQuery();
+
+                this.connection.Close();
+
+                result = true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erreur : " + e, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                result = false;
+            }
+
+            return result;
         }
     }
 }

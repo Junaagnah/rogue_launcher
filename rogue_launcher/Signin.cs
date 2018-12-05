@@ -59,6 +59,7 @@ namespace rogue_launcher
                                 form.user = user;
                                 form.ButtonConnect.Hide();
                                 form.ButtonSignup.Hide();
+                                form.Settingspic.Show();
                                 form.label2.Text = "Bienvenue \r\n" + user.pseudo;
                                 this.Close();
                             }

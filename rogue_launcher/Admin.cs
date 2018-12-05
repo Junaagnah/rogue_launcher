@@ -25,21 +25,44 @@ namespace rogue_launcher
 
             if (users != null)
             {
-                foreach (User user in users)
-                {
-                    ListViewItem list = new ListViewItem();
-
-                    list.UseItemStyleForSubItems = false;
-
-                    list.Text = Convert.ToString(user.id);
-
-                    listView1.Items.Add(list);
-                }
+                FillListView();
             }
             else
             {
                 MessageBox.Show("Impossible de récupérer les utilisateurs dans la base de données.", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 this.Close();
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                if (bdd.DeleteUser(Convert.ToInt32(listView1.SelectedItems[0].Text)))
+                {
+                    MessageBox.Show("L'utilisateur a bien été supprimé.", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    listView1.Items.Clear();
+                    this.users = bdd.ShowUsers();
+                    FillListView();
+                }
+            }
+        }
+
+        private void FillListView()
+        {
+            foreach (User user in users)
+            {
+                ListViewItem list = new ListViewItem();
+
+                list.UseItemStyleForSubItems = false;
+
+                list.Text = Convert.ToString(user.id);
+                list.SubItems.Add(user.email);
+                list.SubItems.Add(user.pseudo);
+                list.SubItems.Add(user.isBan() ? "Oui" : "Non");
+                list.SubItems.Add(user.isAdmin() ? "Oui" : "Non");
+
+                listView1.Items.Add(list);
             }
         }
     }

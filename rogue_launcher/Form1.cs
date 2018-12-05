@@ -18,11 +18,12 @@ namespace rogue_launcher
         {
             InitializeComponent();
             this.user = null;
+            Settingspic.Hide();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Signin signin = new Signin();
+            Signin signin = new Signin(this);
             signin.Show();
         }
 
@@ -34,8 +35,8 @@ namespace rogue_launcher
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            Admin admin = new Admin();
-            admin.Show();
+            Settings settings = new Settings(this, this.user);
+            settings.Show();
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
