@@ -22,13 +22,8 @@ namespace rogue_launcher
 
         private void button1_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
-            Signin _signin = new Signin(this);
-            _signin.Show();
-=======
             Signin signin = new Signin();
             signin.Show();
->>>>>>> Modification classe User & avancement panel admin
         }
 
         private void button2_Click(object sender, EventArgs e)
