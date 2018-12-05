@@ -60,6 +60,8 @@ namespace rogue_launcher
 
         public bool CheckEmail(String email)
         {
+            bool result = true;
+
             try
             {
                 this.connection.Open();
@@ -74,24 +76,28 @@ namespace rogue_launcher
                 {
                     if (reader.Read())
                     {
-                        this.connection.Close();
-                        return true;
+                        result = true;
                     } else
                     {
-                        this.connection.Close();
-                        return false;
+                        result = false;
                     }
                 }
+
+                this.connection.Close();
             } catch (Exception e)
             {
                 MessageBox.Show("Erreur : " + e, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                return false;
+                result = false;
             }
+
+            return result;
         }
 
         public bool CheckUsername(String username)
         {
+            bool result = true;
+
             try
             {
                 this.connection.Open();
@@ -106,22 +112,106 @@ namespace rogue_launcher
                 {
                     if (reader.Read())
                     {
-                        this.connection.Close();
-                        return true;
+                        result = true;
                     }
                     else
                     {
-                        this.connection.Close();
-                        return false;
+                        result = false;
                     }
                 }
+
+                this.connection.Close();
             }
             catch (Exception e)
             {
                 MessageBox.Show("Erreur : " + e, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                return false;
+                result = false;
             }
+
+            return result;
+        }
+
+        public bool CheckBan(String email)
+        {
+            bool result = true;
+            try
+            {
+                this.connection.Open();
+
+                MySqlCommand query = this.connection.CreateCommand();
+
+                query.CommandText = "SELECT ban FROM users WHERE email = @email";
+
+                query.Parameters.AddWithValue("@email", email);
+
+                using (MySqlDataReader reader = query.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            if(reader.GetInt32(0) == 1)
+                            {
+                                result = true;
+                            }
+                            else
+                            {
+                                result = false;
+                            }
+                        }
+                    }
+                }
+
+                this.connection.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erreur : " + e, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                result = false;
+            }
+
+            return result;
+        }
+
+        public string Signin(string email, string password)
+        {
+            string msg = "";
+
+            try
+            {
+                this.connection.Open();
+
+                MySqlCommand query = this.connection.CreateCommand();
+
+                query.CommandText = "SELECT id, username FROM users WHERE email = @email AND password = SHA2(@password, 224)";
+
+                query.Parameters.AddWithValue("@email", email);
+                query.Parameters.AddWithValue("@password", password);
+
+                using (MySqlDataReader reader = query.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            msg = reader[0] + " " + reader[1];
+                        }
+                    }
+                    else
+                    { 
+                        msg = "Mot de passe incorrect.";
+                    }
+                }
+                this.connection.Close();
+            }
+            catch (Exception e)
+            {
+                msg = e.ToString();
+            }
+
+            return msg;
         }
     }
 }

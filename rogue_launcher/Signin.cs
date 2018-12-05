@@ -14,6 +14,7 @@ namespace rogue_launcher
 {
     public partial class Signin : Form
     {
+        Cbdd bdd = new Cbdd();
         public Signin()
         {
             InitializeComponent();
@@ -41,6 +42,21 @@ namespace rogue_launcher
 
                 if (isEmail)
                 {
+                    if (bdd.CheckEmail(email)){
+
+                        if (bdd.CheckBan(email))
+                        {
+                            MessageBox.Show("Votre compte a été banni  ¯\\_(ツ)_/¯", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                        else
+                        {
+                            MessageBox.Show(bdd.Signin(email, passwd), "Log", MessageBoxButtons.OK);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Cette adresse e-mail ne correspond a aucun compte enregistré, merci de créer un compte si vous n'en possédez pas.");
+                    }
 
                 } else
                 {
