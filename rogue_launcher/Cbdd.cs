@@ -218,9 +218,9 @@ namespace rogue_launcher
             return result;
         }
 
-        public string Signin(string email, string password)
+        public User Signin(string email, string password)
         {
-            string msg = "";
+            User user = null;
 
             try
             {
@@ -228,7 +228,7 @@ namespace rogue_launcher
 
                 MySqlCommand query = this.connection.CreateCommand();
 
-                query.CommandText = "SELECT id, username FROM users WHERE email = @email AND password = SHA2(@password, 224)";
+                query.CommandText = "SELECT id, username, admin FROM users WHERE email = @email AND password = SHA2(@password, 224)";
 
                 query.Parameters.AddWithValue("@email", email);
                 query.Parameters.AddWithValue("@password", password);
@@ -239,22 +239,22 @@ namespace rogue_launcher
                     {
                         while (reader.Read())
                         {
-                            msg = reader[0] + " " + reader[1];
+                            user = new User(Convert.ToInt32(reader[0]), reader[1].ToString(), Convert.ToBoolean(reader[2]));
                         }
                     }
                     else
-                    { 
-                        msg = "Mot de passe incorrect.";
+                    {
+                        user = null;
                     }
                 }
                 this.connection.Close();
             }
             catch (Exception e)
             {
-                msg = e.ToString();
+                MessageBox.Show("Erreur : " + e, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-            return msg;
+            return user;
         }
     }
 }

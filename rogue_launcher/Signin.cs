@@ -15,9 +15,11 @@ namespace rogue_launcher
     public partial class Signin : Form
     {
         Cbdd bdd = new Cbdd();
-        public Signin()
+        Form1 form = null;
+        public Signin(Form1 f)
         {
             InitializeComponent();
+            form = f;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -50,12 +52,21 @@ namespace rogue_launcher
                         }
                         else
                         {
-                            MessageBox.Show(bdd.Signin(email, passwd), "Log", MessageBoxButtons.OK);
+                            User user = bdd.Signin(email, passwd);
+
+                            if (user != null)
+                            {
+                                form.user = user;
+                                form.ButtonConnect.Hide();
+                                form.ButtonSignup.Hide();
+                                form.label2.Text = "Bienvenue \r\n" + user.pseudo;
+                                this.Close();
+                            }
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Cette adresse e-mail ne correspond a aucun compte enregistré, merci de créer un compte si vous n'en possédez pas.");
+                        MessageBox.Show("Cette adresse e-mail ne correspond a aucun compte enregistré, merci de créer un compte si vous n'en possédez pas.", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
 
                 } else
@@ -67,6 +78,11 @@ namespace rogue_launcher
             {
                 MessageBox.Show("Merci de remplir tous les champs.", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

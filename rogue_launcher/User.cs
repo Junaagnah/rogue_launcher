@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace rogue_launcher
 {
-    class User
+    public class User
     {
         public int id;
         public String pseudo;
