@@ -175,6 +175,49 @@ namespace rogue_launcher
             return result;
         }
 
+        public bool CheckAdmin(String email, String password)
+        {
+            bool result = true;
+            try
+            {
+                this.connection.Open();
+
+                MySqlCommand query = this.connection.CreateCommand();
+
+                query.CommandText = "SELECT admin FROM users WHERE email = @email AND password = SHA2(@password, 224)";
+
+                query.Parameters.AddWithValue("@email", email);
+
+                using (MySqlDataReader reader = query.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            if (reader.GetInt32(0) == 1)
+                            {
+                                result = true;
+                            }
+                            else
+                            {
+                                result = false;
+                            }
+                        }
+                    }
+                }
+
+                this.connection.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erreur : " + e, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+                result = false;
+            }
+
+            return result;
+        }
+
         public string Signin(string email, string password)
         {
             string msg = "";

@@ -54,6 +54,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminConnect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminConnect.Designer.cs">
+      <DependentUpon>AdminConnect.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cbdd.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
@@ -75,6 +81,7 @@
     <Compile Include="Signup.Designer.cs">
       <DependentUpon>Signup.cs</DependentUpon>
     </Compile>
+    <Compile Include="User.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
