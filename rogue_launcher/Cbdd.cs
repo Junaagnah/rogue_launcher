@@ -256,5 +256,38 @@ namespace rogue_launcher
 
             return user;
         }
+
+        public List<User> ShowUsers()
+        {
+            List<User> users = new List<User>();
+
+            try
+            {
+                this.connection.Open();
+
+                MySqlCommand query = this.connection.CreateCommand();
+
+                query.CommandText = "SELECT id, email, username, admin, ban FROM users";
+
+                using (MySqlDataReader reader = query.ExecuteReader())
+                {
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            users.Add(new User(Convert.ToInt32(reader[0]), Convert.ToString(reader[1]), Convert.ToString(reader[2]), Convert.ToBoolean(reader[3]), Convert.ToBoolean(reader[4])));
+                        }
+                    }
+                }
+
+                this.connection.Close();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erreur : " + e, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return users;
+        }
     }
 }

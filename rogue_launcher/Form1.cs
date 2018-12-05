@@ -22,14 +22,25 @@ namespace rogue_launcher
 
         private void button1_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             Signin _signin = new Signin(this);
             _signin.Show();
+=======
+            Signin signin = new Signin();
+            signin.Show();
+>>>>>>> Modification classe User & avancement panel admin
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Signup _signup = new Signup();
-            _signup.Show();
+            Signup signup = new Signup();
+            signup.Show();
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            Admin admin = new Admin();
+            admin.Show();
         }
 
         private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
