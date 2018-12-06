@@ -9,6 +9,7 @@ using MySql.Data.MySqlClient;
 
 namespace rogue_launcher
 {
+    //Classe Cbdd permettant d'effectuer des requêtes SQL
     class Cbdd
     {
         //Déclaration objet connexion Mysql
@@ -211,12 +212,19 @@ namespace rogue_launcher
                 query.Parameters.AddWithValue("@email", email);
                 query.Parameters.AddWithValue("@password", password);
 
+                //On réutilise l'objet MySqlDataReader
                 using (MySqlDataReader reader = query.ExecuteReader())
                 {
                     if (reader.HasRows)
                     {
                         while (reader.Read())
                         {
+                            //On crée un nouvel objet User avec comme paramètres les informations récupérées dans la base de données.
+                            //reader[0] : ID
+                            //reader[1] : email
+                            //reader[2] : username
+                            //reader[3] : ban
+                            //false : on considère que quand il se connecte, l'utilisateur n'est pas banni, on set donc directement à false
                             user = new User(Convert.ToInt32(reader[0]), Convert.ToString(reader[1]), Convert.ToString(reader[2]), Convert.ToBoolean(reader[3]), false);
                         }
                     }
@@ -235,8 +243,10 @@ namespace rogue_launcher
             return user;
         }
 
+        //On récupère l'intégralité des utilisateurs de la bdd pour les afficher dans le panel admin
         public List<User> ShowUsers()
         {
+            //On crée une liste d'objets User car on ne connaît pas le nombre d'utilisateurs dans la bdd
             List<User> users = new List<User>();
 
             try
@@ -245,6 +255,7 @@ namespace rogue_launcher
 
                 MySqlCommand query = this.connection.CreateCommand();
 
+                //On récupère tout sauf le mot de passe : il est crypté, ça ne sert à rien
                 query.CommandText = "SELECT id, email, username, admin, ban FROM users";
 
                 using (MySqlDataReader reader = query.ExecuteReader())
@@ -253,6 +264,7 @@ namespace rogue_launcher
                     {
                         while (reader.Read())
                         {
+                            //Pour chaque ligne récupérée dans la BDD, on ajoute dans la liste un nouvel utilisateur avec les informations récupérées dans la BDD
                             users.Add(new User(Convert.ToInt32(reader[0]), Convert.ToString(reader[1]), Convert.ToString(reader[2]), Convert.ToBoolean(reader[3]), Convert.ToBoolean(reader[4])));
                         }
                     }
@@ -265,9 +277,11 @@ namespace rogue_launcher
                 MessageBox.Show("Erreur : " + e, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
+            //On renvoie la liste des utilisateurs récupérés dans la base de données
             return users;
         }
 
+        //On supprime un utilisateur grâce à son id
         public bool DeleteUser(int id)
         {
             bool result = false;
@@ -278,6 +292,7 @@ namespace rogue_launcher
 
                 MySqlCommand query = this.connection.CreateCommand();
 
+                //Requête pour supprimer la ligne de l'utilisateur via son ID
                 query.CommandText = "DELETE FROM users WHERE id IN (@id)";
 
                 query.Parameters.AddWithValue("@id", id);
@@ -294,9 +309,11 @@ namespace rogue_launcher
                 result = false;
             }
 
+            //Si la supression a fonctionné on renvoie true, sinon false
             return result;
         }
 
+        //On met à jour un utilisateur dans la base de données via le panel administrateur
         public bool UpdateUser(User user)
         {
             bool result = false;
@@ -307,22 +324,28 @@ namespace rogue_launcher
 
                 MySqlCommand query = this.connection.CreateCommand();
 
+                //On crée la base de la requête qui sera utilisée dans tous les cas
                 query.CommandText = "UPDATE users SET email = @email, username = @username, ban = @ban, admin = @admin";
 
+                //Si la fonction getPassword de l'objet user ne renvoie pas un string vide,
+                //on ajoute à la requête le paramètre password ainsi que la variable password
                 if (user.getPassword() != "")
                 {
                     query.CommandText += ", password = SHA2(@password, 224)";
                     query.Parameters.AddWithValue("@password", user.getPassword());
                 }
 
+                //Enfin, on ajoute la condition où on compare l'ID afin de sélectionner le bon utilisateur
                 query.CommandText += " WHERE id = @id";
 
+                //On remplace les paramètres dans la query par les variables
                 query.Parameters.AddWithValue("@email", user.email);
                 query.Parameters.AddWithValue("@username", user.pseudo);
                 query.Parameters.AddWithValue("@ban", (user.isBan() == true ? 1 : 0));
                 query.Parameters.AddWithValue("@admin", (user.isAdmin() == true ? 1 : 0));
                 query.Parameters.AddWithValue("@id", user.id);
 
+                //On exécute la query
                 query.ExecuteNonQuery();
 
                 this.connection.Close();
@@ -334,6 +357,7 @@ namespace rogue_launcher
                 result = false;
             }
 
+            //Renvoie true si ça a fonctionné, sinon false
             return result;
         }
     }

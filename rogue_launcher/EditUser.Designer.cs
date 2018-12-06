@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.email = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.username = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.passwd = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.confpasswd = new System.Windows.Forms.TextBox();
-            this.ban = new System.Windows.Forms.CheckBox();
-            this.adminchk = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.adminchk = new System.Windows.Forms.CheckBox();
+            this.ban = new System.Windows.Forms.CheckBox();
+            this.confpasswd = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.passwd = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.username = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.email = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.idlabel = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -66,86 +66,25 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // label1
+            // button2
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(2, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(122, 20);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Adresse e-mail :";
+            this.button2.Location = new System.Drawing.Point(195, 234);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(92, 23);
+            this.button2.TabIndex = 13;
+            this.button2.Text = "ANNULER";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // email
+            // button1
             // 
-            this.email.Location = new System.Drawing.Point(6, 40);
-            this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(281, 20);
-            this.email.TabIndex = 3;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(2, 63);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(134, 20);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Nom d\'utilisateur :";
-            // 
-            // username
-            // 
-            this.username.Location = new System.Drawing.Point(6, 86);
-            this.username.Name = "username";
-            this.username.Size = new System.Drawing.Size(281, 20);
-            this.username.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(2, 109);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(180, 20);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Nouveau mot de passe :";
-            // 
-            // passwd
-            // 
-            this.passwd.Location = new System.Drawing.Point(6, 132);
-            this.passwd.Name = "passwd";
-            this.passwd.Size = new System.Drawing.Size(281, 20);
-            this.passwd.TabIndex = 7;
-            this.passwd.UseSystemPasswordChar = true;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(2, 155);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(107, 20);
-            this.label4.TabIndex = 8;
-            this.label4.Text = "Confirmation :";
-            // 
-            // confpasswd
-            // 
-            this.confpasswd.Location = new System.Drawing.Point(6, 178);
-            this.confpasswd.Name = "confpasswd";
-            this.confpasswd.Size = new System.Drawing.Size(281, 20);
-            this.confpasswd.TabIndex = 9;
-            this.confpasswd.UseSystemPasswordChar = true;
-            // 
-            // ban
-            // 
-            this.ban.AutoSize = true;
-            this.ban.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ban.Location = new System.Drawing.Point(6, 204);
-            this.ban.Name = "ban";
-            this.ban.Size = new System.Drawing.Size(69, 24);
-            this.ban.TabIndex = 10;
-            this.ban.Text = "Banni";
-            this.ban.UseVisualStyleBackColor = true;
+            this.button1.Location = new System.Drawing.Point(6, 234);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(182, 23);
+            this.button1.TabIndex = 12;
+            this.button1.Text = "VALIDER";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // adminchk
             // 
@@ -158,25 +97,86 @@
             this.adminchk.Text = "Administrateur";
             this.adminchk.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // ban
             // 
-            this.button1.Location = new System.Drawing.Point(6, 234);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(182, 23);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "VALIDER";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ban.AutoSize = true;
+            this.ban.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ban.Location = new System.Drawing.Point(6, 204);
+            this.ban.Name = "ban";
+            this.ban.Size = new System.Drawing.Size(69, 24);
+            this.ban.TabIndex = 10;
+            this.ban.Text = "Banni";
+            this.ban.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // confpasswd
             // 
-            this.button2.Location = new System.Drawing.Point(195, 234);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(92, 23);
-            this.button2.TabIndex = 13;
-            this.button2.Text = "ANNULER";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.confpasswd.Location = new System.Drawing.Point(6, 178);
+            this.confpasswd.Name = "confpasswd";
+            this.confpasswd.Size = new System.Drawing.Size(281, 20);
+            this.confpasswd.TabIndex = 9;
+            this.confpasswd.UseSystemPasswordChar = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(2, 155);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(107, 20);
+            this.label4.TabIndex = 8;
+            this.label4.Text = "Confirmation :";
+            // 
+            // passwd
+            // 
+            this.passwd.Location = new System.Drawing.Point(6, 132);
+            this.passwd.Name = "passwd";
+            this.passwd.Size = new System.Drawing.Size(281, 20);
+            this.passwd.TabIndex = 7;
+            this.passwd.UseSystemPasswordChar = true;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(2, 109);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(180, 20);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Nouveau mot de passe :";
+            // 
+            // username
+            // 
+            this.username.Location = new System.Drawing.Point(6, 86);
+            this.username.Name = "username";
+            this.username.Size = new System.Drawing.Size(281, 20);
+            this.username.TabIndex = 5;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(2, 63);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(134, 20);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "Nom d\'utilisateur :";
+            // 
+            // email
+            // 
+            this.email.Location = new System.Drawing.Point(6, 40);
+            this.email.Name = "email";
+            this.email.Size = new System.Drawing.Size(281, 20);
+            this.email.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(2, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(122, 20);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Adresse e-mail :";
             // 
             // label5
             // 

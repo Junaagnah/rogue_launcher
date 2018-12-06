@@ -19,6 +19,9 @@ namespace rogue_launcher
             InitializeComponent();
             this.user = null;
             Settingspic.Hide();
+            ButtonPlay.Hide();
+            welcomeText.Hide();
+            welcomeText.Text = "";
         }
 
         private void button1_Click(object sender, EventArgs e)

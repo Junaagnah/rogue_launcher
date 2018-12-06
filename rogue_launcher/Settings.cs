@@ -10,11 +10,14 @@ using System.Windows.Forms;
 
 namespace rogue_launcher
 {
+    //Fenêtre des paramètres
     public partial class Settings : Form
     {
+        //Déclarations des variables nécessaires au fonctionnement de la fenêtre
         Form1 form;
         User user;
 
+        //Le constructeur prend en paramètres la référence de Form1 qui est la fenêtre précédente, ainsi que l'objet session user
         public Settings(Form1 f, User user)
         {
             InitializeComponent();
@@ -22,18 +25,24 @@ namespace rogue_launcher
             this.user = user;
         }
 
+        //Bouton de déconnexion
         private void button1_Click(object sender, EventArgs e)
         {
+            //On vide la variable session, on vide le label2 affichant "Bienvenue " + pseudo, on cache l'icône des paramètres et on réaffiche le bouton inscription
             form.user = null;
-            form.label2.Text = "";
+            form.welcomeText.Text = "";
+            form.welcomeText.Hide();
             form.Settingspic.Hide();
-            form.ButtonConnect.Show();
+            form.ButtonPlay.Hide();
             form.ButtonSignup.Show();
+            form.ButtonConnect.Show();
             this.Close();
         }
 
+        //Bouton affichant le panel administrateur
         private void button2_Click(object sender, EventArgs e)
         {
+            //Si l'utilisateur connecté est administrateur on affiche le panel admin, sinon on affiche un message d'erreur
             if (this.user.isAdmin())
             {
                 Admin admin = new Admin();

@@ -33,8 +33,8 @@
             this.ButtonConnect = new System.Windows.Forms.Button();
             this.ButtonSignup = new System.Windows.Forms.Button();
             this.Settingspic = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
+            this.ButtonPlay = new System.Windows.Forms.Button();
+            this.welcomeText = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.Settingspic)).BeginInit();
             this.SuspendLayout();
             // 
@@ -91,23 +91,23 @@
             this.Settingspic.TabStop = false;
             this.Settingspic.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
-            // button1
+            // ButtonPlay
             // 
-            this.button1.Location = new System.Drawing.Point(12, 395);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(586, 42);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "JOUER";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            this.ButtonPlay.Location = new System.Drawing.Point(12, 395);
+            this.ButtonPlay.Name = "ButtonPlay";
+            this.ButtonPlay.Size = new System.Drawing.Size(586, 42);
+            this.ButtonPlay.TabIndex = 5;
+            this.ButtonPlay.Text = "JOUER";
+            this.ButtonPlay.UseVisualStyleBackColor = true;
+            this.ButtonPlay.Click += new System.EventHandler(this.button1_Click_1);
             // 
-            // label2
+            // welcomeText
             // 
-            this.label2.Location = new System.Drawing.Point(605, 396);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(182, 42);
-            this.label2.TabIndex = 6;
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.welcomeText.Location = new System.Drawing.Point(605, 396);
+            this.welcomeText.Name = "welcomeText";
+            this.welcomeText.Size = new System.Drawing.Size(182, 42);
+            this.welcomeText.TabIndex = 6;
+            this.welcomeText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // Form1
             // 
@@ -120,8 +120,8 @@
             this.Controls.Add(this.ButtonConnect);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.ButtonPlay);
+            this.Controls.Add(this.welcomeText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "Form1";
@@ -140,8 +140,8 @@
         public System.Windows.Forms.Button ButtonConnect;
         public System.Windows.Forms.Button ButtonSignup;
         public System.Windows.Forms.PictureBox Settingspic;
-        private System.Windows.Forms.Button button1;
-        public System.Windows.Forms.Label label2;
+        public System.Windows.Forms.Button ButtonPlay;
+        public System.Windows.Forms.Label welcomeText;
     }
 }
 
