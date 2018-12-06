@@ -63,6 +63,10 @@ namespace rogue_launcher
                                 form.label2.Text = "Bienvenue \r\n" + user.pseudo;
                                 this.Close();
                             }
+                            else
+                            {
+                                MessageBox.Show("Le mot de passe est incorrect.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                     else

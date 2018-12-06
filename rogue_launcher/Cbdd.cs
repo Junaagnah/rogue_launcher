@@ -58,23 +58,28 @@ namespace rogue_launcher
             }
         }
 
+        //On check si un email est déjà enregistré dans la BDD
         public bool CheckEmail(String email)
         {
+            //On renvoie true si c'est le cas, sinon non
             bool result = true;
 
             try
             {
                 this.connection.Open();
 
+                //On crée une commande MySql
                 MySqlCommand query = this.connection.CreateCommand();
 
                 query.CommandText = "SELECT email FROM users WHERE email = @email";
 
                 query.Parameters.AddWithValue("@email", email);
 
+                //On utilise la classe MysqlDataReader
                 using (MySqlDataReader reader = query.ExecuteReader())
                 {
-                    if (reader.Read())
+                    //Si le DataReader contient des données on renvoie true, sinon false
+                    if (reader.HasRows)
                     {
                         result = true;
                     } else
@@ -83,17 +88,22 @@ namespace rogue_launcher
                     }
                 }
 
+                //On ferme la connexion
                 this.connection.Close();
             } catch (Exception e)
             {
+                //Si il y a une erreur, on l'affiche dans une messagebox
                 MessageBox.Show("Erreur : " + e, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
                 result = false;
             }
 
+            //On renvoie le résultat pour déterminer si un email existe ou non
             return result;
         }
 
+        //@TODO: à fusionner avec CheckEmail ?
+        //On check si un username est déjà enregistré
         public bool CheckUsername(String username)
         {
             bool result = true;
@@ -104,13 +114,16 @@ namespace rogue_launcher
 
                 MySqlCommand query = this.connection.CreateCommand();
 
-                query.CommandText = "SELECT email FROM users WHERE username = @username";
+                //On demande à la BDD de sélectionner la ligne où username est égal au paramètre que l'on lui a donné
+                query.CommandText = "SELECT username FROM users WHERE username = @username";
 
+                //On remplace la valeur "@username" avec la variable username
                 query.Parameters.AddWithValue("@username", username);
 
                 using (MySqlDataReader reader = query.ExecuteReader())
                 {
-                    if (reader.Read())
+                    //Ici encore, on vérifie si la requête renvoie des données
+                    if (reader.HasRows)
                     {
                         result = true;
                     }
@@ -120,6 +133,7 @@ namespace rogue_launcher
                     }
                 }
 
+                //Fermeture de la connexion
                 this.connection.Close();
             }
             catch (Exception e)
@@ -129,9 +143,11 @@ namespace rogue_launcher
                 result = false;
             }
 
+            //On retourne le booléen
             return result;
         }
 
+        //On vérifie si un utilisateur est banni
         public bool CheckBan(String email)
         {
             bool result = true;
@@ -141,6 +157,7 @@ namespace rogue_launcher
 
                 MySqlCommand query = this.connection.CreateCommand();
 
+                //La requête récupère le paramètre ban de la table users où email est égal à la variable email
                 query.CommandText = "SELECT ban FROM users WHERE email = @email";
 
                 query.Parameters.AddWithValue("@email", email);
@@ -151,6 +168,7 @@ namespace rogue_launcher
                     {
                         while (reader.Read())
                         {
+                            //Si la valeur récupérée est égale à 1, l'utilisateur est banni. On renvoie donc true
                             if(reader.GetInt32(0) == 1)
                             {
                                 result = true;
@@ -175,51 +193,10 @@ namespace rogue_launcher
             return result;
         }
 
-        public bool CheckAdmin(String email, String password)
-        {
-            bool result = true;
-            try
-            {
-                this.connection.Open();
-
-                MySqlCommand query = this.connection.CreateCommand();
-
-                query.CommandText = "SELECT admin FROM users WHERE email = @email AND password = SHA2(@password, 224)";
-
-                query.Parameters.AddWithValue("@email", email);
-
-                using (MySqlDataReader reader = query.ExecuteReader())
-                {
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            if (reader.GetInt32(0) == 1)
-                            {
-                                result = true;
-                            }
-                            else
-                            {
-                                result = false;
-                            }
-                        }
-                    }
-                }
-
-                this.connection.Close();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Erreur : " + e, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-                result = false;
-            }
-
-            return result;
-        }
-
+        //On récupère les infos de l'utilisateur dans l'objet session User afin de le connecter à l'application
         public User Signin(string email, string password)
         {
+            //On déclare un objet User null afin de le remplir par après
             User user = null;
 
             try
@@ -228,6 +205,7 @@ namespace rogue_launcher
 
                 MySqlCommand query = this.connection.CreateCommand();
 
+                //On sélectionne les champs dans la bdd pour les récupérer et les insérer dans l'objet session user
                 query.CommandText = "SELECT id, email, username, admin FROM users WHERE email = @email AND password = SHA2(@password, 224)";
 
                 query.Parameters.AddWithValue("@email", email);
@@ -308,6 +286,46 @@ namespace rogue_launcher
 
                 this.connection.Close();
 
+                result = true;
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Erreur : " + e, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                result = false;
+            }
+
+            return result;
+        }
+
+        public bool UpdateUser(User user)
+        {
+            bool result = false;
+
+            try
+            {
+                this.connection.Open();
+
+                MySqlCommand query = this.connection.CreateCommand();
+
+                query.CommandText = "UPDATE users SET email = @email, username = @username, ban = @ban, admin = @admin";
+
+                if (user.getPassword() != "")
+                {
+                    query.CommandText += ", password = SHA2(@password, 224)";
+                    query.Parameters.AddWithValue("@password", user.getPassword());
+                }
+
+                query.CommandText += " WHERE id = @id";
+
+                query.Parameters.AddWithValue("@email", user.email);
+                query.Parameters.AddWithValue("@username", user.pseudo);
+                query.Parameters.AddWithValue("@ban", (user.isBan() == true ? 1 : 0));
+                query.Parameters.AddWithValue("@admin", (user.isAdmin() == true ? 1 : 0));
+                query.Parameters.AddWithValue("@id", user.id);
+
+                query.ExecuteNonQuery();
+
+                this.connection.Close();
                 result = true;
             }
             catch (Exception e)

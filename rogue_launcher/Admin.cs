@@ -13,7 +13,8 @@ namespace rogue_launcher
     public partial class Admin : Form
     {
         private Cbdd bdd = new Cbdd();
-        private List<User> users = null;
+        public List<User> users = null;
+        private User selectedUser = null;
         public Admin()
         {
             InitializeComponent();
@@ -48,7 +49,7 @@ namespace rogue_launcher
             }
         }
 
-        private void FillListView()
+        public void FillListView()
         {
             foreach (User user in users)
             {
@@ -63,6 +64,17 @@ namespace rogue_launcher
                 list.SubItems.Add(user.isAdmin() ? "Oui" : "Non");
 
                 listView1.Items.Add(list);
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (listView1.SelectedItems.Count > 0)
+            {
+                this.selectedUser = new User(Convert.ToInt32(listView1.SelectedItems[0].SubItems[0].Text), listView1.SelectedItems[0].SubItems[1].Text, listView1.SelectedItems[0].SubItems[2].Text, (listView1.SelectedItems[0].SubItems[4].Text == "Oui" ? true : false), (listView1.SelectedItems[0].SubItems[3].Text == "Oui" ? true : false));
+
+                EditUser edituser = new EditUser(selectedUser, this);
+                edituser.Show();
             }
         }
     }

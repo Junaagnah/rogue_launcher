@@ -11,6 +11,7 @@ namespace rogue_launcher
         public int id;
         public String email;
         public String pseudo;
+        private String password = "";
         private bool admin;
         private bool ban;
 
@@ -31,6 +32,16 @@ namespace rogue_launcher
         public bool isBan()
         {
             return this.ban;
+        }
+
+        public void setPassword(String passwd)
+        {
+            this.password = passwd;
+        }
+
+        public String getPassword()
+        {
+            return this.password;
         }
     }
 }
