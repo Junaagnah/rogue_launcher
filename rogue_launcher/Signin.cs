@@ -9,24 +9,26 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Text.RegularExpressions;
-
+// Fenêtre qui receuillera les login et mot de passes Utilisateurs afin de les connecter
 namespace rogue_launcher
 {
     public partial class Signin : Form
     {
+        // Déclaration des variables nécéssaires au fonctionnement de la classe
         Cbdd bdd = new Cbdd();
         Form1 form = null;
+        // Constructeur
         public Signin(Form1 f)
         {
             InitializeComponent();
             form = f;
         }
-
+        // Actions du bouton CONNEXION
         private void button1_Click(object sender, EventArgs e)
         {
             String email = Signin_email.Text;
             String passwd = Signin_password.Text;
-
+            // On vérifie que les champs ne sont pas vides
             if (email != "" && passwd != "")
             {
                 bool isEmail = false;
@@ -35,6 +37,7 @@ namespace rogue_launcher
                 {
                     foreach (char c in email)
                     {
+                        // On vérifie que l'email renseigné contiens bien un '@'
                         if (c == '@')
                         {
                             isEmail = true;
@@ -44,18 +47,20 @@ namespace rogue_launcher
 
                 if (isEmail)
                 {
-                    if (bdd.CheckEmail(email)){
+                    if (bdd.CheckEmail(email)){ // On vérifie que l'email est bien enregistré dans la base de donnée
 
-                        if (bdd.CheckBan(email))
+                        if (bdd.CheckBan(email)) // On vérifie que le compte associé a l'email n'est pas banni
                         {
                             MessageBox.Show("Votre compte a été banni  ¯\\_(ツ)_/¯", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
+                            // On vérifie que le mot de passe et l'email correspondent
                             User user = bdd.Signin(email, passwd);
-
+                            // si ce n'est pas null c'est que la requête a bien renvoyé un utilisateur
                             if (user != null)
                             {
+                                //On modofie l'affichage du premier menu puis on ferme la fenêtre de connexion
                                 form.user = user;
                                 form.ButtonConnect.Hide();
                                 form.ButtonSignup.Hide();
@@ -66,6 +71,7 @@ namespace rogue_launcher
                                 this.Close();
                             }
                             else
+                            // Les différents messages d'erreur renvoyés lorsque les conditions ne sont pas remplies
                             {
                                 MessageBox.Show("Le mot de passe est incorrect.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
@@ -85,11 +91,6 @@ namespace rogue_launcher
             {
                 MessageBox.Show("Merci de remplir tous les champs.", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

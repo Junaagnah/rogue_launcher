@@ -58,7 +58,6 @@
             this.webBrowser1.Size = new System.Drawing.Size(776, 352);
             this.webBrowser1.TabIndex = 1;
             this.webBrowser1.Url = new System.Uri("http://localhost/rogue_changelog", System.UriKind.Absolute);
-            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
             // ButtonConnect
             // 
@@ -93,6 +92,7 @@
             // 
             // ButtonPlay
             // 
+
             this.ButtonPlay.Location = new System.Drawing.Point(12, 395);
             this.ButtonPlay.Name = "ButtonPlay";
             this.ButtonPlay.Size = new System.Drawing.Size(586, 42);
@@ -100,6 +100,7 @@
             this.ButtonPlay.Text = "JOUER";
             this.ButtonPlay.UseVisualStyleBackColor = true;
             this.ButtonPlay.Click += new System.EventHandler(this.button1_Click_1);
+
             // 
             // welcomeText
             // 

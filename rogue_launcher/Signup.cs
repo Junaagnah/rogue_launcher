@@ -10,53 +10,58 @@ using System.Windows.Forms;
 
 namespace rogue_launcher
 {
+    // Fenêtre qui permettra a un utilisateur de s'inscrire
     public partial class Signup : Form
     {
+        // Déclaration des variables nécéssaires au fonctionnement de la classe
         Cbdd bdd = new Cbdd();
-
+        // Constructeur
         public Signup()
         {
             InitializeComponent();
         }
-
+        // Bouton ANNULER pour fermer le fenêtre d'inscription
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-
+        // Actions du bouton VALIDER
         private void button1_Click(object sender, EventArgs e)
-        { 
+        {
+            // on récupère et on stocke les champs à renseigner
             String email = Signup_email.Text;
             String username = Signup_username.Text;
             String passwd = Signup_passwd.Text;
             String confpasswd = Signup_confpasswd.Text;
-
+            // On vérifie si tout les champs sont remplis
             if (email != "" && username != "" && passwd != "" && confpasswd != "")
             {
                 bool isEmail = false;
 
                 foreach (Char c in email)
                 {
+                    // On vérifie que l'email comporte bien un @
                     if (c == '@')
                     {
                         isEmail = true;
                     }
                 }
 
-                if (isEmail)
+                if (isEmail) // Si l'email contient bien un @
                 {
-                    if (passwd == confpasswd)
+                    if (passwd == confpasswd) // Que les mots de passe correspondent
                     {
-                        if (!bdd.CheckEmail(email))
+                        if (!bdd.CheckEmail(email)) // Que l'eamil renseigné n'est pas déjà utilisé
                         {
-                            if (!bdd.CheckUsername(username))
+                            if (!bdd.CheckUsername(username)) // Que le nom d'utilisateur rensigné n'est pas déjà utilisé
                             {
-                                if (bdd.Signup(email, username, passwd))
+                                if (bdd.Signup(email, username, passwd)) // Fonction de stockage du nouveau compte utilisateur dans la base de donnée
                                 {
                                     MessageBox.Show("Inscription réussie !", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                                     this.Close();
                                 }
+                                // Liste des différentes erreurs lorsque les conditions ne sont pas remplies
                             } else {
                                 MessageBox.Show("Le nom d'utilisateur est déjà utilisé !", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
@@ -76,11 +81,6 @@ namespace rogue_launcher
             {
                 MessageBox.Show("Merci de remplir tous les champs.", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }
