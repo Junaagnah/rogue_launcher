@@ -101,5 +101,13 @@ namespace rogue_launcher
                 MessageBox.Show("Veuillez sélectionner un utilisateur.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        //Bouton refresh
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            listView1.Items.Clear();
+            this.users = bdd.ShowUsers();
+            FillListView();
+        }
     }
 }

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net;
+using System.IO;
 // Fenêtre d'acceuil lors de l'execution du launcher
 namespace rogue_launcher
 {
@@ -14,6 +16,7 @@ namespace rogue_launcher
     {
         //Déclaration des variables nécessaires au fonctionnement de la classe
         public User user;
+        private String userSession = "user";
 
         //Constructeur
         public Form1()
@@ -45,6 +48,59 @@ namespace rogue_launcher
         {
             Settings settings = new Settings(this, this.user);
             settings.Show();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.FormClosing += new FormClosingEventHandler(Form1_FormClosing);
+
+            if (!IsOnline())
+            {
+                ButtonConnect.Hide();
+                ButtonSignup.Hide();
+                ButtonPlay.Show();
+                welcomeText.Text = "Vous êtes hors ligne.";
+                welcomeText.Show();
+                MessageBox.Show("Vous êtes hors ligne, vous pouvez jouer mais votre score ne sera pas enregistré.", "Attention", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                if (File.Exists(this.userSession))
+                {
+                    File.Delete(this.userSession);
+                }
+
+                using (StreamWriter tw = new StreamWriter(this.userSession, true))
+                {
+                    tw.Write("offline");
+                }
+            }
+        }
+
+        private bool IsOnline()
+        {
+            bool result = false;
+
+            try
+            {
+                using (WebClient client = new WebClient())
+                using (client.OpenRead("http://clients3.google.com/generate_204"))
+                {
+                    result = true;
+                }
+            }
+            catch
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        private void Form1_FormClosing(Object Sender, FormClosingEventArgs e)
+        {
+            if (File.Exists(this.userSession))
+            {
+                File.Delete(this.userSession);
+            }
         }
     }
 }

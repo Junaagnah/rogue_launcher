@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using System.IO;
 
 // Fenêtre qui receuillera les login et mot de passes Utilisateurs afin de les connecter
 namespace rogue_launcher
@@ -72,6 +73,19 @@ namespace rogue_launcher
                                 form.ButtonPlay.Show();
                                 form.welcomeText.Show();
                                 form.welcomeText.Text = "Bienvenue \r\n" + user.pseudo;
+
+                                String userSession = "user";
+
+                                if (File.Exists(userSession))
+                                {
+                                    File.Delete(userSession);
+                                }
+
+                                using(StreamWriter tw = new StreamWriter(userSession, true))
+                                {
+                                    tw.Write(user.id);
+                                }
+
                                 this.Close();
                             }
                             else

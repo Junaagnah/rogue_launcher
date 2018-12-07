@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace rogue_launcher
 {
@@ -36,6 +37,14 @@ namespace rogue_launcher
             form.ButtonPlay.Hide();
             form.ButtonSignup.Show();
             form.ButtonConnect.Show();
+
+            String userSession = "user";
+
+            if (File.Exists(userSession))
+            {
+                File.Delete(userSession);
+            }
+
             this.Close();
         }
 
