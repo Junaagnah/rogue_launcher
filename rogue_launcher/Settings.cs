@@ -40,6 +40,7 @@ namespace rogue_launcher
 
             String userSession = "user";
 
+            //On n'oublie pas de supprimer le fichier user si l'utilisateur se déconnecte
             if (File.Exists(userSession))
             {
                 File.Delete(userSession);

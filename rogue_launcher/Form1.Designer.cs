@@ -35,6 +35,8 @@
             this.Settingspic = new System.Windows.Forms.PictureBox();
             this.ButtonPlay = new System.Windows.Forms.Button();
             this.welcomeText = new System.Windows.Forms.Label();
+            this.DownloadProgressBar = new System.Windows.Forms.ProgressBar();
+            this.BackgroundDownloader = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.Settingspic)).BeginInit();
             this.SuspendLayout();
             // 
@@ -61,7 +63,7 @@
             // 
             // ButtonConnect
             // 
-            this.ButtonConnect.Location = new System.Drawing.Point(13, 396);
+            this.ButtonConnect.Location = new System.Drawing.Point(12, 395);
             this.ButtonConnect.Name = "ButtonConnect";
             this.ButtonConnect.Size = new System.Drawing.Size(586, 42);
             this.ButtonConnect.TabIndex = 2;
@@ -71,7 +73,7 @@
             // 
             // ButtonSignup
             // 
-            this.ButtonSignup.Location = new System.Drawing.Point(605, 396);
+            this.ButtonSignup.Location = new System.Drawing.Point(608, 395);
             this.ButtonSignup.Name = "ButtonSignup";
             this.ButtonSignup.Size = new System.Drawing.Size(182, 42);
             this.ButtonSignup.TabIndex = 3;
@@ -92,7 +94,7 @@
             // 
             // ButtonPlay
             // 
-            this.ButtonPlay.Location = new System.Drawing.Point(12, 395);
+            this.ButtonPlay.Location = new System.Drawing.Point(13, 396);
             this.ButtonPlay.Name = "ButtonPlay";
             this.ButtonPlay.Size = new System.Drawing.Size(586, 42);
             this.ButtonPlay.TabIndex = 5;
@@ -107,12 +109,26 @@
             this.welcomeText.TabIndex = 6;
             this.welcomeText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // DownloadProgressBar
+            // 
+            this.DownloadProgressBar.Location = new System.Drawing.Point(13, 396);
+            this.DownloadProgressBar.Name = "DownloadProgressBar";
+            this.DownloadProgressBar.Size = new System.Drawing.Size(775, 42);
+            this.DownloadProgressBar.TabIndex = 7;
+            this.DownloadProgressBar.UseWaitCursor = true;
+            this.DownloadProgressBar.Visible = false;
+            // 
+            // BackgroundDownloader
+            // 
+            this.BackgroundDownloader.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
             // Form1
             // 
             this.AccessibleName = "";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.DownloadProgressBar);
             this.Controls.Add(this.Settingspic);
             this.Controls.Add(this.ButtonSignup);
             this.Controls.Add(this.ButtonConnect);
@@ -141,6 +157,8 @@
         public System.Windows.Forms.PictureBox Settingspic;
         public System.Windows.Forms.Button ButtonPlay;
         public System.Windows.Forms.Label welcomeText;
+        public System.Windows.Forms.ProgressBar DownloadProgressBar;
+        private System.ComponentModel.BackgroundWorker BackgroundDownloader;
     }
 }
 

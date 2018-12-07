@@ -81,9 +81,10 @@ namespace rogue_launcher
                                     File.Delete(userSession);
                                 }
 
-                                using(StreamWriter tw = new StreamWriter(userSession, true))
+                                //Quand l'utilisateur se connecte, on écrit son id dans le fichier user pour le jeu
+                                using(StreamWriter writer = new StreamWriter(userSession, true))
                                 {
-                                    tw.Write(user.id);
+                                    writer.Write(user.id);
                                 }
 
                                 this.Close();
