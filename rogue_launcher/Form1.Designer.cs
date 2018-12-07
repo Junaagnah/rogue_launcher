@@ -82,6 +82,7 @@
             // Settingspic
             // 
             this.Settingspic.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.Settingspic.Image = global::rogue_launcher.Properties.Resources.settings_icon;
             this.Settingspic.Location = new System.Drawing.Point(762, 6);
             this.Settingspic.Name = "Settingspic";
             this.Settingspic.Size = new System.Drawing.Size(26, 25);
