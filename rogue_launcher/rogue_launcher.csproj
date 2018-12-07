@@ -140,7 +140,7 @@
     <None Include="Resources\settings_icon.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\refresh %281%29.png" />
+    <None Include="Resources\refresh_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
