@@ -10,30 +10,35 @@ using System.Windows.Forms;
 
 namespace rogue_launcher
 {
-    // Fenêtre qui permettra a un utilisateur de s'inscrire
+    // Fenêtre qui permettra à un utilisateur de s'inscrire
     public partial class Signup : Form
     {
-        // Déclaration des variables nécéssaires au fonctionnement de la classe
+        // Déclaration des variables nécessaires au fonctionnement de la classe
         Cbdd bdd = new Cbdd();
+
         // Constructeur
         public Signup()
         {
             InitializeComponent();
         }
-        // Bouton ANNULER pour fermer le fenêtre d'inscription
+
+        // Bouton ANNULER pour fermer la fenêtre d'inscription
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
+
         // Actions du bouton VALIDER
         private void button1_Click(object sender, EventArgs e)
         {
+
             // on récupère et on stocke les champs à renseigner
             String email = Signup_email.Text;
             String username = Signup_username.Text;
             String passwd = Signup_passwd.Text;
             String confpasswd = Signup_confpasswd.Text;
-            // On vérifie si tout les champs sont remplis
+
+            // On vérifie si tous les champs sont remplis
             if (email != "" && username != "" && passwd != "" && confpasswd != "")
             {
                 bool isEmail = false;
@@ -51,11 +56,11 @@ namespace rogue_launcher
                 {
                     if (passwd == confpasswd) // Que les mots de passe correspondent
                     {
-                        if (!bdd.CheckEmail(email)) // Que l'eamil renseigné n'est pas déjà utilisé
+                        if (!bdd.CheckEmail(email)) // Que l'email renseigné n'est pas déjà utilisé
                         {
                             if (!bdd.CheckUsername(username)) // Que le nom d'utilisateur rensigné n'est pas déjà utilisé
                             {
-                                if (bdd.Signup(email, username, passwd)) // Fonction de stockage du nouveau compte utilisateur dans la base de donnée
+                                if (bdd.Signup(email, username, passwd)) // Fonction de stockage du nouveau compte utilisateur dans la base de données
                                 {
                                     MessageBox.Show("Inscription réussie !", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

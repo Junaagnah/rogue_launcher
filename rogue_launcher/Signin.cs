@@ -9,25 +9,29 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Globalization;
 using System.Text.RegularExpressions;
+
 // Fenêtre qui receuillera les login et mot de passes Utilisateurs afin de les connecter
 namespace rogue_launcher
 {
     public partial class Signin : Form
     {
-        // Déclaration des variables nécéssaires au fonctionnement de la classe
+        // Déclaration des variables nécessaires au fonctionnement de la classe
         Cbdd bdd = new Cbdd();
         Form1 form = null;
+
         // Constructeur
         public Signin(Form1 f)
         {
             InitializeComponent();
             form = f;
         }
+
         // Actions du bouton CONNEXION
         private void button1_Click(object sender, EventArgs e)
         {
             String email = Signin_email.Text;
             String passwd = Signin_password.Text;
+
             // On vérifie que les champs ne sont pas vides
             if (email != "" && passwd != "")
             {
@@ -60,7 +64,7 @@ namespace rogue_launcher
                             // si ce n'est pas null c'est que la requête a bien renvoyé un utilisateur
                             if (user != null)
                             {
-                                //On modofie l'affichage du premier menu puis on ferme la fenêtre de connexion
+                                //On modifie l'affichage du premier menu puis on ferme la fenêtre de connexion
                                 form.user = user;
                                 form.ButtonConnect.Hide();
                                 form.ButtonSignup.Hide();
@@ -71,6 +75,7 @@ namespace rogue_launcher
                                 this.Close();
                             }
                             else
+
                             // Les différents messages d'erreur renvoyés lorsque les conditions ne sont pas remplies
                             {
                                 MessageBox.Show("Le mot de passe est incorrect.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);

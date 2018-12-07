@@ -12,8 +12,9 @@ namespace rogue_launcher
 {
     public partial class Form1 : Form
     {
-        // Déclaration des variables nécéssaires au fonctionnement de la classe
+        //Déclaration des variables nécessaires au fonctionnement de la classe
         public User user;
+
         //Constructeur
         public Form1()
         {
@@ -24,19 +25,22 @@ namespace rogue_launcher
             welcomeText.Hide();
             welcomeText.Text = "";
         }
-        // Bouton qui va appeler l'affichage de la fenêtre de connexion
+
+        //Bouton qui va appeler l'affichage de la fenêtre de connexion
         private void button1_Click(object sender, EventArgs e)
         {
             Signin signin = new Signin(this);
             signin.Show();
         }
-        // Bouton qui va appeler l'afficahge de la fenêtre d'incription
+
+        //Bouton qui va appeler l'affichage de la fenêtre d'incription
         private void button2_Click(object sender, EventArgs e)
         {
             Signup signup = new Signup();
             signup.Show();
         }
-        // Bouton d'accès aux paramètres
+
+        //Bouton d'accès aux paramètres
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             Settings settings = new Settings(this, this.user);

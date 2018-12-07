@@ -92,15 +92,12 @@
             // 
             // ButtonPlay
             // 
-
             this.ButtonPlay.Location = new System.Drawing.Point(12, 395);
             this.ButtonPlay.Name = "ButtonPlay";
             this.ButtonPlay.Size = new System.Drawing.Size(586, 42);
             this.ButtonPlay.TabIndex = 5;
             this.ButtonPlay.Text = "JOUER";
             this.ButtonPlay.UseVisualStyleBackColor = true;
-            this.ButtonPlay.Click += new System.EventHandler(this.button1_Click_1);
-
             // 
             // welcomeText
             // 

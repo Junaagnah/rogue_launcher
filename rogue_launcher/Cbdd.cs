@@ -24,7 +24,7 @@ namespace rogue_launcher
         //On initialise la connexion à la base de données
         private void InitConnection()
         {
-            String connectString = "SERVER=localhost;DATABASE=roguelike;PORT=3307;UID=root;PASSWORD=";
+            String connectString = "SERVER=sql7.freemysqlhosting.net;DATABASE=sql7268870;PORT=3306;UID=sql7268870;PASSWORD=UUtpVXeUkH";
             this.connection = new MySqlConnection(connectString);
         }
 
