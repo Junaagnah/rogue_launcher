@@ -341,8 +341,8 @@ namespace rogue_launcher
                 //On remplace les paramètres dans la query par les variables
                 query.Parameters.AddWithValue("@email", user.email);
                 query.Parameters.AddWithValue("@username", user.pseudo);
-                query.Parameters.AddWithValue("@ban", (user.isBan() == true ? 1 : 0));
-                query.Parameters.AddWithValue("@admin", (user.isAdmin() == true ? 1 : 0));
+                query.Parameters.AddWithValue("@ban", (user.isBan() ? 1 : 0));
+                query.Parameters.AddWithValue("@admin", (user.isAdmin() ? 1 : 0));
                 query.Parameters.AddWithValue("@id", user.id);
 
                 //On exécute la query
