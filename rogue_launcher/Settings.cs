@@ -63,5 +63,12 @@ namespace rogue_launcher
                 MessageBox.Show("Vous devez être administrateur pour accéder à cette fenêtre.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            AccountSettings accountSettings = new AccountSettings(this.form, this.user);
+            accountSettings.Show();
+            this.Close();
+        }
     }
 }

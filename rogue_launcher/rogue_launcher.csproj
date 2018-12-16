@@ -55,6 +55,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AccountSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AccountSettings.Designer.cs">
+      <DependentUpon>AccountSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     </Compile>
     <Compile Include="Updater.cs" />
     <Compile Include="User.cs" />
+    <EmbeddedResource Include="AccountSettings.resx">
+      <DependentUpon>AccountSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin.resx">
       <DependentUpon>Admin.cs</DependentUpon>
     </EmbeddedResource>
