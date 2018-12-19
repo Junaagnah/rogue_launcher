@@ -1,6 +1,6 @@
 ﻿namespace rogue_launcher
 {
-    partial class Form1
+    partial class MainScreen
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -122,7 +122,7 @@
             // 
             this.BackgroundDownloader.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
             // 
-            // Form1
+            // MainScreen
             // 
             this.AccessibleName = "";
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -138,7 +138,7 @@
             this.Controls.Add(this.welcomeText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
-            this.Name = "Form1";
+            this.Name = "MainScreen";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Roguelike Launcher";
             this.Load += new System.EventHandler(this.Form1_Load);

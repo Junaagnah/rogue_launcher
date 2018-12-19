@@ -15,11 +15,11 @@ namespace rogue_launcher
     public partial class Settings : Form
     {
         //Déclarations des variables nécessaires au fonctionnement de la fenêtre
-        Form1 form;
+        MainScreen form;
         User user;
 
         //Le constructeur prend en paramètres la référence de Form1 qui est la fenêtre précédente, ainsi que l'objet session user
-        public Settings(Form1 f, User user)
+        public Settings(MainScreen f, User user)
         {
             InitializeComponent();
             this.form = f;

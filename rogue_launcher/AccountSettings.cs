@@ -13,11 +13,11 @@ namespace rogue_launcher
 {
     public partial class AccountSettings : Form
     {
-        Form1 form;
+        MainScreen form;
         User user;
         Cbdd bdd = new Cbdd();
 
-        public AccountSettings(Form1 f, User user)
+        public AccountSettings(MainScreen f, User user)
         {
             InitializeComponent();
             this.form = f;

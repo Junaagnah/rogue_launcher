@@ -18,10 +18,10 @@ namespace rogue_launcher
     {
         // Déclaration des variables nécessaires au fonctionnement de la classe
         Cbdd bdd = new Cbdd();
-        Form1 form = null;
+        MainScreen form = null;
 
         // Constructeur
-        public Signin(Form1 f)
+        public Signin(MainScreen f)
         {
             InitializeComponent();
             form = f;

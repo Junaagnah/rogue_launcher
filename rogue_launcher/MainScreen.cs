@@ -12,7 +12,7 @@ using System.IO;
 // Fenêtre d'acceuil lors de l'execution du launcher
 namespace rogue_launcher
 {
-    public partial class Form1 : Form
+    public partial class MainScreen : Form
     {
         //Déclaration des variables nécessaires au fonctionnement de la classe
         public User user;
@@ -20,7 +20,7 @@ namespace rogue_launcher
         private String userSession = "user";
 
         //Constructeur
-        public Form1()
+        public MainScreen()
         {
             InitializeComponent();
             this.user = null;

@@ -15,14 +15,14 @@ namespace rogue_launcher
     class Updater
     {
         //Variables nécessaires au fonctionnement de la classe
-        private Form1 form;
+        private MainScreen form;
         private String localVersion = "localversion";
         private String url = "http://roguelike.000webhostapp.com";
         private String serverVersion;
         private String UpdatedGame;
 
         //Constructeur prenant l'instance de la Form principale en paramètre
-        public Updater(Form1 f)
+        public Updater(MainScreen f)
         {
             this.form = f;
         }
