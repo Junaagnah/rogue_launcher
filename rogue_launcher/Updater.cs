@@ -17,7 +17,7 @@ namespace rogue_launcher
         //Variables nécessaires au fonctionnement de la classe
         private MainScreen form;
         private String localVersion = "localversion";
-        private String url = "http://roguelike.000webhostapp.com";
+        private String url = "http://185.213.24.116/~roguelike/updater";
         private String serverVersion;
         private String UpdatedGame;
 
