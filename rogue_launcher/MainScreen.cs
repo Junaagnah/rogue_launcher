@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Net;
 using System.IO;
+using System.Diagnostics;
+
 // Fenêtre d'acceuil lors de l'execution du launcher
 namespace rogue_launcher
 {
@@ -135,6 +137,13 @@ namespace rogue_launcher
             //On lance la méthode checkVersion de l'objet updater qui va effectuer la mise à jour    
             this.updater.checkVersion();
 
+        }
+
+        private void ButtonPlay_Click(object sender, EventArgs e)
+        {
+            //Lancement du jeu et fermeture du launcher
+            Process.Start("game\\Roguelike.exe");
+            this.Close();
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainScreen));
             this.label1 = new System.Windows.Forms.Label();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.ButtonConnect = new System.Windows.Forms.Button();
@@ -65,7 +66,7 @@
             // 
             // ButtonConnect
             // 
-            this.ButtonConnect.Location = new System.Drawing.Point(18, 608);
+            this.ButtonConnect.Location = new System.Drawing.Point(21, 608);
             this.ButtonConnect.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.ButtonConnect.Name = "ButtonConnect";
             this.ButtonConnect.Size = new System.Drawing.Size(879, 65);
@@ -106,6 +107,7 @@
             this.ButtonPlay.TabIndex = 5;
             this.ButtonPlay.Text = "JOUER";
             this.ButtonPlay.UseVisualStyleBackColor = true;
+            this.ButtonPlay.Click += new System.EventHandler(this.ButtonPlay_Click);
             // 
             // welcomeText
             // 
@@ -118,7 +120,7 @@
             // 
             // DownloadProgressBar
             // 
-            this.DownloadProgressBar.Location = new System.Drawing.Point(20, 609);
+            this.DownloadProgressBar.Location = new System.Drawing.Point(21, 609);
             this.DownloadProgressBar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DownloadProgressBar.Name = "DownloadProgressBar";
             this.DownloadProgressBar.Size = new System.Drawing.Size(1162, 65);
@@ -145,6 +147,7 @@
             this.Controls.Add(this.ButtonPlay);
             this.Controls.Add(this.welcomeText);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.Name = "MainScreen";

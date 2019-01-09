@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Admin));
             this.listView1 = new System.Windows.Forms.ListView();
             this.Id = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Email = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -50,9 +51,10 @@
             this.Administrator});
             this.listView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.listView1.FullRowSelect = true;
-            this.listView1.Location = new System.Drawing.Point(12, 12);
+            this.listView1.Location = new System.Drawing.Point(18, 18);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(635, 275);
+            this.listView1.Size = new System.Drawing.Size(950, 421);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -83,9 +85,10 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(44, 293);
+            this.button1.Location = new System.Drawing.Point(66, 451);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(420, 26);
+            this.button1.Size = new System.Drawing.Size(630, 40);
             this.button1.TabIndex = 1;
             this.button1.Text = "EDITER";
             this.button1.UseVisualStyleBackColor = true;
@@ -93,9 +96,10 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(470, 293);
+            this.button2.Location = new System.Drawing.Point(705, 451);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(176, 26);
+            this.button2.Size = new System.Drawing.Size(264, 40);
             this.button2.TabIndex = 2;
             this.button2.Text = "SUPPRIMER";
             this.button2.UseVisualStyleBackColor = true;
@@ -105,23 +109,26 @@
             // 
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Image = global::rogue_launcher.Properties.Resources.refresh_icon;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 293);
+            this.pictureBox1.Location = new System.Drawing.Point(18, 451);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(26, 26);
+            this.pictureBox1.Size = new System.Drawing.Size(39, 40);
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // Admin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 327);
+            this.ClientSize = new System.Drawing.Size(988, 503);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listView1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Admin";
