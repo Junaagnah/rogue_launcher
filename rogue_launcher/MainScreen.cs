@@ -141,9 +141,18 @@ namespace rogue_launcher
 
         private void ButtonPlay_Click(object sender, EventArgs e)
         {
-            //Lancement du jeu et fermeture du launcher
-            Process.Start("game\\Roguelike.exe");
-            this.Close();
+            //On tente de récupérer le processus du jeu
+            Process[] roguelike = Process.GetProcessesByName("Roguelike");
+
+            if (roguelike.Length == 0)
+            {
+                //S'il n'existe pas, on lance le jeu
+                Process.Start("game\\Roguelike.exe");
+            } else
+            {
+                //Sinon on affiche un message d'erreur pour dire que le jeu est déjà lancé
+                MessageBox.Show("Le jeu est déjà en cours d'exécution.", "Erreur", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
