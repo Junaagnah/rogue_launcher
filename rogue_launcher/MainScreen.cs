@@ -134,7 +134,7 @@ namespace rogue_launcher
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            //On lance la méthode checkVersion de l'objet updater qui va effectuer la mise à jour    
+            //On lance la méthode checkVersion de l'instance updater qui va effectuer la mise à jour    
             this.updater.checkVersion();
 
         }

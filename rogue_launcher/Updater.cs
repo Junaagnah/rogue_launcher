@@ -15,9 +15,9 @@ namespace rogue_launcher
     class Updater
     {
         //Variables nécessaires au fonctionnement de la classe
-        private MainScreen form;
+        readonly MainScreen form;
         private String localVersion = "localversion";
-        private String url = "http://185.213.24.116/~roguelike/updater";
+        readonly String url = "http://185.213.24.116/~roguelike/updater";
         private String serverVersion;
         private String UpdatedGame;
 
@@ -33,10 +33,10 @@ namespace rogue_launcher
             //On vérifie si l'updater a déjà été lancé en vérifiant si le fichier localversion existe
             if (!File.Exists(this.localVersion))
             {
-                //S'il n'existe pas, on le crée et on y insert 0 comme version de base
+                //S'il n'existe pas, on le crée et on y insert 0.0.0 comme version de base
                 using(StreamWriter writer = new StreamWriter(this.localVersion, true))
                 {
-                    writer.Write("0");
+                    writer.Write("0.0.0");
                 }
             }
 
@@ -109,7 +109,7 @@ namespace rogue_launcher
         }
 
         //Fonction permettant d'extraire le zip du jeu dans le dossier "game"
-        public void ExtractGame()
+        private void ExtractGame()
         {
             ZipFile.ExtractToDirectory("game.zip", "game");
 

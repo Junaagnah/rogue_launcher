@@ -60,7 +60,9 @@ namespace rogue_launcher
                         {
                             if (!bdd.CheckUsername(username)) // Que le nom d'utilisateur rensigné n'est pas déjà utilisé
                             {
-                                if (bdd.Signup(email, username, passwd)) // Fonction de stockage du nouveau compte utilisateur dans la base de données
+                                User newUser = new User(email, username, passwd);
+
+                                if (bdd.Signup(newUser)) // Fonction de stockage du nouveau compte utilisateur dans la base de données
                                 {
                                     MessageBox.Show("Inscription réussie !", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

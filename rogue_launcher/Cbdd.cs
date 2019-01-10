@@ -29,7 +29,7 @@ namespace rogue_launcher
         }
 
         //Fonction permettant d'enregistrer un nouvel utilisateur, renvoie true si succès, sinon renvoie false
-        public bool Signup(String email, String username, String password)
+        public bool Signup(User user)
         {
             try
             {
@@ -40,9 +40,9 @@ namespace rogue_launcher
                 //On crypte le mot de passe avec la méthode de cryptage SHA2
                 query.CommandText = "INSERT INTO users (email, username, password) VALUES (@email, @username, SHA2(@password, 224))";
 
-                query.Parameters.AddWithValue("@email", email);
-                query.Parameters.AddWithValue("@username", username);
-                query.Parameters.AddWithValue("@password", password);
+                query.Parameters.AddWithValue("@email", user.Email);
+                query.Parameters.AddWithValue("@username", user.Pseudo);
+                query.Parameters.AddWithValue("@password", user.Password);
 
                 //Execution de la requête
                 query.ExecuteNonQuery();
