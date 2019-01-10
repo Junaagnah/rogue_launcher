@@ -53,7 +53,7 @@ namespace rogue_launcher
         private void button2_Click(object sender, EventArgs e)
         {
             //Si l'utilisateur connecté est administrateur on affiche le panel admin, sinon on affiche un message d'erreur
-            if (this.user.isAdmin())
+            if (this.user.Admin)
             {
                 Admin admin = new Admin();
                 admin.Show();

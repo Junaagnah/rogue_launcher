@@ -72,7 +72,7 @@ namespace rogue_launcher
                                 form.Settingspic.Show();
                                 form.ButtonPlay.Show();
                                 form.welcomeText.Show();
-                                form.welcomeText.Text = "Bienvenue \r\n" + user.pseudo;
+                                form.welcomeText.Text = "Bienvenue \r\n" + user.Pseudo;
 
                                 String userSession = "user";
 
@@ -84,7 +84,7 @@ namespace rogue_launcher
                                 //Quand l'utilisateur se connecte, on écrit son id dans le fichier user pour le jeu
                                 using(StreamWriter writer = new StreamWriter(userSession, true))
                                 {
-                                    writer.Write(user.id);
+                                    writer.Write(user.Id);
                                 }
 
                                 this.Close();

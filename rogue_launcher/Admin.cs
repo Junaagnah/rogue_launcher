@@ -73,11 +73,11 @@ namespace rogue_launcher
                 //Pour chaque ligne on crée un nouvel objet ListViewItem
                 ListViewItem list = new ListViewItem();
 
-                list.Text = Convert.ToString(user.id);
-                list.SubItems.Add(user.email);
-                list.SubItems.Add(user.pseudo);
-                list.SubItems.Add(user.isBan() ? "Oui" : "Non");
-                list.SubItems.Add(user.isAdmin() ? "Oui" : "Non");
+                list.Text = Convert.ToString(user.Id);
+                list.SubItems.Add(user.Email);
+                list.SubItems.Add(user.Pseudo);
+                list.SubItems.Add(user.Ban ? "Oui" : "Non");
+                list.SubItems.Add(user.Admin ? "Oui" : "Non");
 
                 listView1.Items.Add(list);
             }

@@ -30,7 +30,7 @@ namespace rogue_launcher
             {
                 if (passwd.Text == confpasswd.Text)
                 {
-                    this.user.setPassword(passwd.Text);
+                    this.user.Password = passwd.Text;
 
                     if (bdd.UpdateUser(this.user))
                     {
@@ -58,7 +58,7 @@ namespace rogue_launcher
         {
             if (MessageBox.Show("Êtes-vous sûr de vouloir supprimer votre compte ?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
-                if (bdd.DeleteUser(this.user.id))
+                if (bdd.DeleteUser(this.user.Id))
                 {
                     MessageBox.Show("Votre compte a bien été supprimé.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

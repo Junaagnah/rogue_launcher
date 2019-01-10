@@ -25,11 +25,11 @@ namespace rogue_launcher
             this.adminForm = admin;
 
             //On remplit les champs de la fenêtre avec les paramètres de l'utilisateur
-            idlabel.Text = Convert.ToString(this.user.id);
-            email.Text = this.user.email;
-            username.Text = this.user.pseudo;
-            ban.Checked = this.user.isBan();
-            adminchk.Checked = this.user.isAdmin();
+            idlabel.Text = Convert.ToString(this.user.Id);
+            email.Text = this.user.Email;
+            username.Text = this.user.Pseudo;
+            ban.Checked = this.user.Ban;
+            adminchk.Checked = this.user.Admin;
         }
 
         //Bouton annuler
@@ -55,8 +55,8 @@ namespace rogue_launcher
                     if (passwd.Text == confpasswd.Text)
                     {
                         //Si c'est le cas, on affecte le nouveau mot de passe à l'utilisateur, puis on appelle la fonction UpdateUser pour mettre à jour l'utilisateur
-                        this.user.setPassword(passwd.Text);
-                        if (bdd.UpdateUser(this.user) == true)
+                        this.user.Password = passwd.Text;
+                        if (bdd.UpdateUser(this.user))
                         {
                             //Si tout s'est bien passé, on affiche un message à l'utilisateur et on met à jour la listview du panel administrateur
                             MessageBox.Show("L'utilisateur a bien été modifié !", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);

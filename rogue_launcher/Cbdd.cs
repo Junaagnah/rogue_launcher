@@ -329,21 +329,21 @@ namespace rogue_launcher
 
                 //Si la fonction getPassword de l'objet user ne renvoie pas un string vide,
                 //on ajoute à la requête le paramètre password ainsi que la variable password
-                if (user.getPassword() != "")
+                if (user.Password != "")
                 {
                     query.CommandText += ", password = SHA2(@password, 224)";
-                    query.Parameters.AddWithValue("@password", user.getPassword());
+                    query.Parameters.AddWithValue("@password", user.Password);
                 }
 
                 //Enfin, on ajoute la condition où on compare l'ID afin de sélectionner le bon utilisateur
                 query.CommandText += " WHERE id = @id";
 
                 //On remplace les paramètres dans la query par les variables
-                query.Parameters.AddWithValue("@email", user.email);
-                query.Parameters.AddWithValue("@username", user.pseudo);
-                query.Parameters.AddWithValue("@ban", (user.isBan() ? 1 : 0));
-                query.Parameters.AddWithValue("@admin", (user.isAdmin() ? 1 : 0));
-                query.Parameters.AddWithValue("@id", user.id);
+                query.Parameters.AddWithValue("@email", user.Email);
+                query.Parameters.AddWithValue("@username", user.Pseudo);
+                query.Parameters.AddWithValue("@ban", (user.Ban ? 1 : 0));
+                query.Parameters.AddWithValue("@admin", (user.Admin ? 1 : 0));
+                query.Parameters.AddWithValue("@id", user.Id);
 
                 //On exécute la query
                 query.ExecuteNonQuery();
