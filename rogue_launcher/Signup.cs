@@ -54,40 +54,138 @@ namespace rogue_launcher
 
                 if (isEmail) // Si l'email contient bien un @
                 {
-                    if (passwd == confpasswd) // Que les mots de passe correspondent
+                    if (checkPasswd(passwd))
                     {
-                        if (!bdd.CheckEmail(email)) // Que l'email renseigné n'est pas déjà utilisé
+                        if (passwd == confpasswd) // Que les mots de passe correspondent
                         {
-                            if (!bdd.CheckUsername(username)) // Que le nom d'utilisateur rensigné n'est pas déjà utilisé
+                            if (!bdd.CheckEmail(email)) // Que l'email renseigné n'est pas déjà utilisé
                             {
-                                User newUser = new User(email, username, passwd);
-
-                                if (bdd.Signup(newUser)) // Fonction de stockage du nouveau compte utilisateur dans la base de données
+                                if (checkPseudo(username))
                                 {
-                                    MessageBox.Show("Inscription réussie !", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    if (!bdd.CheckUsername(username)) // Que le nom d'utilisateur rensigné n'est pas déjà utilisé
+                                    {
+                                        User newUser = new User(email, username, passwd);
 
-                                    this.Close();
+                                        if (bdd.Signup(newUser)) // Fonction d'enregistrement du nouveau compte utilisateur dans la base de données
+                                        {
+                                            MessageBox.Show("Inscription réussie !", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                                            this.Close();
+                                        }
+                                    }
+                                    // Liste des différentes erreurs lorsque les conditions ne sont pas remplies
+                                    else
+                                    {
+                                        MessageBox.Show("Le nom d'utilisateur est déjà utilisé !", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    }
                                 }
-                                // Liste des différentes erreurs lorsque les conditions ne sont pas remplies
-                            } else {
-                                MessageBox.Show("Le nom d'utilisateur est déjà utilisé !", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
-                        } else
-                        {
-                            MessageBox.Show("L'adresse e-mail est déjà utilisée !", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            else
+                            {
+                                MessageBox.Show("L'adresse e-mail est déjà utilisée !", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
-                    } else
-                    {
-                        MessageBox.Show("Les mots de passe ne sont pas les mêmes.", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        else
+                        {
+                            MessageBox.Show("Les mots de passe ne sont pas les mêmes.", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
                     }
-                } else
+                }
+                else
                 {
                     MessageBox.Show("Veuillez entrer une adresse e-mail valide.", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-            } else
+            }
+            else
             {
                 MessageBox.Show("Merci de remplir tous les champs.", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private bool checkPasswd(string password)
+        {
+            bool isPasswd = false;
+            string errorMsg = "";
+            bool upperCase = false;
+            bool lowerCase = false;
+            bool number = false;
+
+            if (password.Length > 7)
+            {
+                for(int i = 0; i < password.Length; i++)
+                {
+                    if (password[i] == ' ')
+                    {
+                        errorMsg = "Votre mot de passe ne peut pas contenir d'espace.";
+                        break;
+                    }
+                }
+
+                if (errorMsg == "")
+                {
+                    for (int i = 0; i < password.Length; i++)
+                    {
+                        if (Char.IsUpper(password[i]))
+                        {
+                            upperCase = true;
+                        }
+
+                        if (Char.IsLower(password[i]))
+                        {
+                            lowerCase = true;
+                        }
+
+                        if (Char.IsNumber(password[i]))
+                        {
+                            number = true;
+                        }
+                    }
+
+                    if (!upperCase || !lowerCase || !number)
+                    {
+                        errorMsg = "Votre mot de passe doit contenir au moins une lettre minuscule, une lettre majuscule et un chiffre.";
+                    }
+                    else
+                    {
+                        isPasswd = true;
+                    }
+                }
+            }
+            else
+            {
+                errorMsg = "Votre mot de passe doit contenir au moins 7 caractères.";
+            }
+
+            if (!isPasswd)
+            {
+                MessageBox.Show(errorMsg, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return isPasswd;
+        }
+
+        private bool checkPseudo(string pseudo)
+        {
+            bool isPseudo = true;
+
+            string errorMsg = "";
+
+            for (int i = 0; i < pseudo.Length; i++)
+            {
+                if (pseudo[i] == ' ')
+                {
+                    isPseudo = false;
+                    errorMsg = "Votre pseudo ne peut pas contenir d'espace.";
+                    break;
+                }
+            }
+            
+            if (!isPseudo)
+            {
+                MessageBox.Show(errorMsg, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+            return isPseudo;
         }
     }
 }

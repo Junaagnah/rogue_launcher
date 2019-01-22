@@ -69,7 +69,7 @@ namespace rogue_launcher
             try
             {
                 using (WebClient client = new WebClient())
-                using (client.OpenRead("http://clients3.google.com/generate_204"))
+                using (client.OpenRead("http://185.213.24.116/~roguelike/"))
                 {
                     result = true;
                 }
