@@ -11,6 +11,7 @@ using System.IO;
 
 namespace rogue_launcher
 {
+    //Fenêtre permettant à l'utilisateur de changer son mot de passe et de supprimer son compte
     public partial class AccountSettings : Form
     {
         MainScreen form;
@@ -24,6 +25,7 @@ namespace rogue_launcher
             this.user = user;
         }
 
+        //Modification du mot de passe
         private void button1_Click(object sender, EventArgs e)
         {
             if (passwd.Text != "" && confpasswd.Text != "")
@@ -54,6 +56,7 @@ namespace rogue_launcher
             this.Close();
         }
 
+        //Suppression du compte
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             if (MessageBox.Show("Êtes-vous sûr de vouloir supprimer votre compte ?\nTous vos scores seront supprimés.", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
