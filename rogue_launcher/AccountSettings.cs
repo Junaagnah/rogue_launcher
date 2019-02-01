@@ -32,12 +32,15 @@ namespace rogue_launcher
             {
                 if (passwd.Text == confpasswd.Text)
                 {
-                    this.user.Password = passwd.Text;
-
-                    if (bdd.UpdateUser(this.user))
+                    if (Password.checkPasswd(passwd.Text))
                     {
-                        MessageBox.Show("Votre mot de passe a bien été modifié.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Close();
+                        this.user.Password = passwd.Text;
+
+                        if (bdd.UpdateUser(this.user))
+                        {
+                            MessageBox.Show("Votre mot de passe a bien été modifié.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            this.Close();
+                        }
                     }
                 }
                 else

@@ -17,6 +17,14 @@ namespace rogue_launcher
         readonly bool admin; //Si l'utilisateur est administrateur
         readonly bool ban; //Si l'utilisateur est banni
 
+        //On utilise l'encapsulation afin de set nos variables privées
+        public int Id { get => id; }
+        public string Email { get => email; }
+        public string Pseudo { get => pseudo; }
+        public string Password { get => password; set => password = value; }
+        public bool Admin { get => admin; }
+        public bool Ban { get => ban; }
+
         //Constructeur de base
         public User(String email, String pseudo)
         {
@@ -37,13 +45,5 @@ namespace rogue_launcher
             this.admin = admin;
             this.ban = ban;
         }
-
-        //On utilise l'encapsulation afin de set nos variables privées
-        public int Id { get => id; }
-        public string Email { get => email; }
-        public string Pseudo { get => pseudo; }
-        public string Password { get => password; set => password = value; }
-        public bool Admin { get => admin; }
-        public bool Ban { get => ban; }
     }
 }
