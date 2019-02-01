@@ -301,6 +301,18 @@ namespace rogue_launcher
 
                 this.connection.Close();
 
+                this.connection.Open();
+
+                query = this.connection.CreateCommand();
+
+                query.CommandText = "DELETE FROM partie WHERE FKid_user IN (@id)";
+
+                query.Parameters.AddWithValue("@id", id);
+
+                query.ExecuteNonQuery();
+
+                this.connection.Close();
+
                 result = true;
             }
             catch (Exception e)

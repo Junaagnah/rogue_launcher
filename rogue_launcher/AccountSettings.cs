@@ -56,7 +56,7 @@ namespace rogue_launcher
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (MessageBox.Show("Êtes-vous sûr de vouloir supprimer votre compte ?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
+            if (MessageBox.Show("Êtes-vous sûr de vouloir supprimer votre compte ?\nTous vos scores seront supprimés.", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.Yes)
             {
                 if (bdd.DeleteUser(this.user.Id))
                 {
