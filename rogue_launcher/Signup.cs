@@ -14,7 +14,12 @@ namespace rogue_launcher
     public partial class Signup : Form
     {
         // Déclaration des variables nécessaires au fonctionnement de la classe
-        Cbdd bdd = new Cbdd();
+        private Cbdd bdd = new Cbdd();
+        private bool isEmail;
+        private String errorMsg;
+
+        public bool IsEmail { get => isEmail; set => isEmail = value; }
+        public String ErrorMsg { get => errorMsg; set => errorMsg = value; }
 
         // Constructeur
         public Signup()
@@ -38,26 +43,33 @@ namespace rogue_launcher
             String passwd = Signup_passwd.Text;
             String confpasswd = Signup_confpasswd.Text;
 
+            Inscription(email, username, passwd, confpasswd);
+        }
+
+        public void Inscription(String email, String username, String passwd, String confpasswd)
+        {
             // On vérifie si tous les champs sont remplis
             if (email != "" && username != "" && passwd != "" && confpasswd != "")
             {
-                bool isEmail = false;
+                IsEmail = false;
 
                 foreach (Char c in email)
                 {
                     // On vérifie que l'email comporte bien un @
                     if (c == '@')
                     {
-                        isEmail = true;
+                        IsEmail = true;
                     }
                 }
 
-                if (isEmail) // Si l'email contient bien un @
+                if (IsEmail) // Si l'email contient bien un @
                 {
                     if (Password.checkPasswd(passwd))
                     {
-                        if (passwd == confpasswd) // Que les mots de passe correspondent
+                        try
                         {
+                            CheckPasswordEquals(passwd, confpasswd);
+
                             if (!bdd.CheckEmail(email)) // Que l'email renseigné n'est pas déjà utilisé
                             {
                                 if (checkPseudo(username))
@@ -80,14 +92,10 @@ namespace rogue_launcher
                                     }
                                 }
                             }
-                            else
-                            {
-                                MessageBox.Show("L'adresse e-mail est déjà utilisée !", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
                         }
-                        else
+                        catch (ArgumentException e)
                         {
-                            MessageBox.Show("Les mots de passe ne sont pas les mêmes.", "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show(e.Message, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -102,28 +110,37 @@ namespace rogue_launcher
             }
         }
 
-        private bool checkPseudo(string pseudo)
+        public bool checkPseudo(string pseudo)
         {
             bool isPseudo = true;
 
-            string errorMsg = "";
+            ErrorMsg = "";
 
             for (int i = 0; i < pseudo.Length; i++)
             {
                 if (pseudo[i] == ' ')
                 {
                     isPseudo = false;
-                    errorMsg = "Votre pseudo ne peut pas contenir d'espace.";
+                    ErrorMsg = "Votre pseudo ne peut pas contenir d'espace.";
                     break;
                 }
             }
             
             if (!isPseudo)
             {
-                MessageBox.Show(errorMsg, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ErrorMsg, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return isPseudo;
+        }
+
+        //Vérifie si les mots de passe sont égaux, sinon renvoie une exception
+        public void CheckPasswordEquals(String passwd, String confpasswd)
+        {
+            if (passwd != confpasswd)
+            {
+                throw new ArgumentException("Les mots de passe ne correspondent pas.");
+            }
         }
     }
 }

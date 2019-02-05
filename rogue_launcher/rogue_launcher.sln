@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.106
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "rogue_launcher", "rogue_launcher.csproj", "{16318211-C5C7-49CB-B567-3D54D0FDA26D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestLauncher", "..\UnitTestLauncher\UnitTestLauncher.csproj", "{7B2FC2B7-6981-4787-AC52-9E9EA2FB10A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{16318211-C5C7-49CB-B567-3D54D0FDA26D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16318211-C5C7-49CB-B567-3D54D0FDA26D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16318211-C5C7-49CB-B567-3D54D0FDA26D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B2FC2B7-6981-4787-AC52-9E9EA2FB10A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B2FC2B7-6981-4787-AC52-9E9EA2FB10A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B2FC2B7-6981-4787-AC52-9E9EA2FB10A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B2FC2B7-6981-4787-AC52-9E9EA2FB10A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

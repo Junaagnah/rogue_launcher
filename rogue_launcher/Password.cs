@@ -10,27 +10,31 @@ namespace rogue_launcher
     //Classe permettant d'effectuer des opérations sur les mots de passe
     public static class Password
     {
+        private static string errorMsg;
+
+        public static string ErrorMsg { get => errorMsg; set => errorMsg = value; }
+
         //Vérifie si le mot de passe est valide
         public static bool checkPasswd(string password)
         {
             bool isPasswd = false;
-            string errorMsg = "";
             bool upperCase = false;
             bool lowerCase = false;
             bool number = false;
+            ErrorMsg = "";
 
-            if (password.Length > 7)
+            if (password.Length >= 7 && password.Length <= 20)
             {
                 for (int i = 0; i < password.Length; i++)
                 {
                     if (password[i] == ' ')
                     {
-                        errorMsg = "Votre mot de passe ne peut pas contenir d'espace.";
+                        ErrorMsg = "Votre mot de passe ne peut pas contenir d'espace.";
                         break;
                     }
                 }
 
-                if (errorMsg == "")
+                if (ErrorMsg == "")
                 {
                     for (int i = 0; i < password.Length; i++)
                     {
@@ -52,7 +56,7 @@ namespace rogue_launcher
 
                     if (!upperCase || !lowerCase || !number)
                     {
-                        errorMsg = "Votre mot de passe doit contenir au moins une lettre minuscule, une lettre majuscule et un chiffre.";
+                        ErrorMsg = "Votre mot de passe doit contenir au moins une lettre minuscule, une lettre majuscule et un chiffre.";
                     }
                     else
                     {
@@ -62,12 +66,12 @@ namespace rogue_launcher
             }
             else
             {
-                errorMsg = "Votre mot de passe doit contenir au moins 7 caractères.";
+                ErrorMsg = "Votre mot de passe doit être compris entre 7 et 20 caractères inclus.";
             }
 
             if (!isPasswd)
             {
-                MessageBox.Show(errorMsg, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ErrorMsg, "ERREUR", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
             return isPasswd;
